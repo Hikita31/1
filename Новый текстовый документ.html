@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Памяти Володи - Ушедшего из DnD группы</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        body {
+            background-color: #1a1a1a;
+            color: #d9d9d9;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(40, 40, 40, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(20, 20, 20, 0.1) 0%, transparent 20%);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #444;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: "†";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            color: #8b0000;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            color: #c9a66b;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        
+        .header h2 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            color: #aaa;
+            font-style: italic;
+        }
+        
+        .memorial-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+        }
+        
+        .portrait {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #555;
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .portrait::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(139, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+            z-index: 1;
+        }
+        
+        .portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(80%);
+        }
+        
+        .memorial-text {
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.6;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.7);
+            border-left: 3px solid #8b0000;
+            border-right: 3px solid #8b0000;
+        }
+        
+        .pay-respects {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .pay-respects h3 {
+            font-size: 1.8rem;
+            color: #c9a66b;
+            margin-bottom: 20px;
+        }
+        
+        .f-button {
+            background-color: #333;
+            color: #d9d9d9;
+            border: 2px solid #555;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        
+        .f-button:hover {
+            background-color: #444;
+            border-color: #777;
+        }
+        
+        .f-counter {
+            font-size: 1.2rem;
+            color: #aaa;
+        }
+        
+        .f-count {
+            color: #c9a66b;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .gif-container {
+            margin: 40px auto;
+            max-width: 500px;
+            border: 2px solid #444;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        .comments-section {
+            margin: 40px 0;
+        }
+        
+        .comments-section h3 {
+            font-size: 1.8rem;
+            color: #c9a66b;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+        }
+        
+        .comment-form {
+            background-color: rgba(40, 40, 40, 0.8);
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #aaa;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: #222;
+            border: 1px solid #444;
+            color: #d9d9d9;
+            border-radius: 3px;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #8b0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #a00;
+        }
+        
+        .comments-list {
+            margin-top: 30px;
+        }
+        
+        .comment {
+            background-color: rgba(50, 50, 50, 0.7);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #555;
+            position: relative;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .comment-author {
+            color: #c9a66b;
+            font-weight: bold;
+        }
+        
+        .comment-date {
+            font-style: italic;
+        }
+        
+        .comment-text {
+            line-height: 1.5;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #444;
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .candle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 30px;
+            height: 50px;
+            background: linear-gradient(to right, #8b4513, #a0522d, #8b4513);
+            border-radius: 3px;
+            box-shadow: 0 0 10px rgba(139, 69, 19, 0.5);
+            z-index: 100;
+        }
+        
+        .candle::after {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 20px;
+            background: linear-gradient(to bottom, #ff8c00, #ff4500);
+            border-radius: 50% 50% 20% 20%;
+            animation: flicker 2s infinite;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .rip {
+            font-size: 4rem;
+            text-align: center;
+            letter-spacing: 10px;
+            color: #8b0000;
+            margin: 20px 0;
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .rip {
+                font-size: 3rem;
+                letter-spacing: 5px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ПАМЯТИ ВОЛОДИ</h1>
+            <h2>2023 - 2026<br>Покинул наш DnD мир и группу по ней</h2>
+        </div>
+        
+        <div class="rip">R.I.P.</div>
+        
+        <div class="memorial-section">
+            <div class="portrait">
+                <img src="ead57efd-547b-429f-8da4-4e2073cc4f07.jpg" alt="Портрет Володи" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiPk5ldCBmb3RvPC90ZXh0Pgo8L3N2Zz4=';">
+            </div>
+            
+            <div class="memorial-text">
+                <p>Сегодня мы скорбим о потере не просто игрока, но верного товарища по приключениям. Володя покинул наш мир DnD, оставив после себя пустоту в наших сердцах и за столом игровых сессий.</p>
+                <p>Он был тем, кто всегда приходил на помощь партии, тем, чьи решения меняли ход кампании, и тем, чьи шутки скрашивали даже самые мрачные подземелья. Его персонажи навсегда останутся в истории наших игр как легенды.</p>
+                <p>Пусть двадцатигранный кубик всегда благоволит ему в иной реальности. Прощай, Володя. Ты навсегда останешься в наших воспоминаниях и записях игровых сессий.</p>
+            </div>
+        </div>
+        
+        <div class="pay-respects">
+            <h3>Отдайте честь ушедшему</h3>
+            <button class="f-button" id="fButton">Нажмите F, чтобы отдать честь</button>
+            <div class="f-counter">Честь отдали: <span class="f-count" id="fCount">0</span> раз</div>
+        </div>
+        
+        <div class="gif-container">
+            <div class="tenor-gif-embed" data-postid="17123563" data-share-method="host" data-aspect-ratio="1.34454" data-width="100%">
+                <a href="https://tenor.com/view/coffine-meme-coffin-dance-dance-gif-17123563">Coffine Meme Coffin Dance GIF</a>from 
+                <a href="https://tenor.com/search/coffine+meme-gifs">Coffine Meme GIFs</a>
+            </div>
+            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        </div>
+        
+        <div class="comments-section">
+            <h3>Прощальные пожелания в последний путь</h3>
+            
+            <div class="comment-form">
+                <div class="form-group">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" id="name" placeholder="Имя вашего персонажа или ваше">
+                </div>
+                
+                <div class="form-group">
+                    <label for="comment">Ваше прощальное пожелание:</label>
+                    <textarea id="comment" placeholder="Напишите несколько слов в память об Володе..."></textarea>
+                </div>
+                
+                <button class="submit-btn" id="submitComment">Отправить прощальное пожелание</button>
+            </div>
+            
+            <div class="comments-list" id="commentsList">
+                <!-- Комментарии будут загружаться здесь -->
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Сайт памяти Володи, покинувшего DnD группу | Вечная память в наших сердцах и записях сессий</p>
+            <p>© 2026</p>
+        </div>
+    </div>
+    
+    <div class="candle"></div>
+    
+    <script>
+        // Счетчик F
+        let fCount = 0;
+        const fButton = document.getElementById('fButton');
+        const fCountElement = document.getElementById('fCount');
+        
+        // Загружаем счетчик F из localStorage
+        const savedFCount = localStorage.getItem('volodyaFCount');
+        if (savedFCount) {
+            fCount = parseInt(savedFCount);
+            fCountElement.textContent = fCount;
+        }
+        
+        // Функция для сохранения нажатий F в TXT файл
+        function saveFToTxt() {
+            const now = new Date();
+            const formattedDate = `${now.getDate().toString().padStart(2, '0')}.${(now.getMonth() + 1).toString().padStart(2, '0')}.${now.getFullYear()} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+            
+            const fData = `Нажатие F в память Володи\nДата: ${formattedDate}\nОбщее количество нажатий: ${fCount}\n---\n`;
+            
+            // Создаем Blob с текстом
+            const blob = new Blob([fData], { type: 'text/plain' });
+            
+            // Создаем ссылку для скачивания
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'f_counter.txt';
+            
+            // Добавляем ссылку на страницу, кликаем по ней и удаляем
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        fButton.addEventListener('click', function() {
+            fCount++;
+            fCountElement.textContent = fCount;
+            
+            // Сохраняем в localStorage
+            localStorage.setItem('volodyaFCount', fCount.toString());
+            
+            // Сохраняем нажатие F в TXT файл
+            saveFToTxt();
+            
+            // Анимация нажатия
+            fButton.style.backgroundColor = '#555';
+            fButton.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                fButton.style.backgroundColor = '';
+                fButton.style.transform = '';
+            }, 150);
+            
+            // Создаем эффект частиц "F"
+            createParticleF();
+        });
+        
+        // Функция для создания частиц "F"
+        function createParticleF() {
+            for (let i = 0; i < 5; i++) {
+                const particle = document.createElement('div');
+                particle.textContent = 'F';
+                particle.style.position = 'fixed';
+                particle.style.color = '#c9a66b';
+                particle.style.fontSize = '20px';
+                particle.style.fontWeight = 'bold';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1000';
+                
+                // Начальная позиция около кнопки
+                const buttonRect = fButton.getBoundingClientRect();
+                const startX = buttonRect.left + buttonRect.width / 2;
+                const startY = buttonRect.top + buttonRect.height / 2;
+                
+                particle.style.left = startX + 'px';
+                particle.style.top = startY + 'px';
+                
+                document.body.appendChild(particle);
+                
+                // Анимация частицы
+                const animation = particle.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${-100 - Math.random() * 100}px) translateX(${(Math.random() - 0.5) * 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: 1000 + Math.random() * 500,
+                    easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                });
+                
+                // Удаляем частицу после анимации
+                animation.onfinish = () => {
+                    particle.remove();
+                };
+            }
+        }
+        
+        // Функция для сохранения комментариев в TXT файл
+        function saveCommentToTxt(name, comment) {
+            // Фиксированная дата: 06.02.2026, случайное время до 16:00
+            const randomHour = Math.floor(Math.random() * 16); // 0-15 часов
+            const randomMinute = Math.floor(Math.random() * 60); // 0-59 минут
+            const formattedTime = `${randomHour.toString().padStart(2, '0')}:${randomMinute.toString().padStart(2, '0')}`;
+            
+            const commentData = `Имя: ${name}\nДата: 06.02.2026 ${formattedTime}\nСообщение: ${comment}\n---\n`;
+            
+            // Создаем Blob с текстом
+            const blob = new Blob([commentData], { type: 'text/plain' });
+            
+            // Создаем ссылку для скачивания
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'comments.txt';
+            
+            // Добавляем ссылку на страницу, кликаем по ней и удаляем
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Также сохраняем комментарий в localStorage для отображения на сайте
+            saveCommentToLocalStorage(name, comment, `06.02.2026 ${formattedTime}`);
+        }
+        
+        // Функция для сохранения комментариев в localStorage
+        function saveCommentToLocalStorage(name, comment, date) {
+            // Получаем существующие комментарии из localStorage
+            const comments = JSON.parse(localStorage.getItem('volodyaComments') || '[]');
+            
+            // Добавляем новый комментарий
+            comments.unshift({
+                name: name,
+                comment: comment,
+                date: date
+            });
+            
+            // Сохраняем обратно в localStorage (ограничиваем последними 50 комментариями)
+            const limitedComments = comments.slice(0, 50);
+            localStorage.setItem('volodyaComments', JSON.stringify(limitedComments));
+            
+            // Отображаем комментарий на странице
+            displayComment(name, comment, date);
+        }
+        
+        // Функция для отображения комментария
+        function displayComment(name, comment, date) {
+            const commentsList = document.getElementById('commentsList');
+            
+            const commentElement = document.createElement('div');
+            commentElement.className = 'comment';
+            commentElement.innerHTML = `
+                <div class="comment-header">
+                    <span class="comment-author">${escapeHtml(name)}</span>
+                    <span class="comment-date">${date}</span>
+                </div>
+                <div class="comment-text">${escapeHtml(comment).replace(/\n/g, '<br>')}</div>
+            `;
+            
+            // Добавляем комментарий в начало списка
+            commentsList.insertBefore(commentElement, commentsList.firstChild);
+        }
+        
+        // Функция для загрузки комментариев из localStorage
+        function loadCommentsFromLocalStorage() {
+            const comments = JSON.parse(localStorage.getItem('volodyaComments') || '[]');
+            const commentsList = document.getElementById('commentsList');
+            
+            // Если комментариев нет, показываем примеры с датой 06.02.2026
+            if (comments.length === 0) {
+                const exampleComments = [
+                    {
+                        name: "Хтоническая Хтоня",
+                        comment: "Мы с тобою так и не увиделись. Я ждала тебя в глубинах подземелья, готовила ловушки и загадки, но ты так и не спустился достаточно глубоко. Теперь навсегда останусь ждать...",
+                        date: "06.02.2026 09:45"
+                    },
+                    {
+                        name: "Гоблин Боблин",
+                        comment: "Твои 1 меняли сюжеты.",
+                        date: "06.02.2026 11:20"
+                    },
+                    {
+                        name: "Батуев Рокстикеры",
+                        comment: "Без пива нет прогресса!",
+                        date: "06.02.2026 10:50"
+                    },
+                    {
+                        name: "Неззнар",
+                        comment: "Как вы мрази пережили 4 огненных шара, я рад что вы покинули эту группу.",
+                        date: "06.02.2026 11:45"
+                    }
+                ];
+                
+                exampleComments.forEach(comment => {
+                    displayComment(comment.name, comment.comment, comment.date);
+                });
+            } else {
+                // Отображаем сохраненные комментарии
+                comments.forEach(comment => {
+                    displayComment(comment.name, comment.comment, comment.date);
+                });
+            }
+        }
+        
+        // Обработка отправки комментариев
+        const submitButton = document.getElementById('submitComment');
+        const nameInput = document.getElementById('name');
+        const commentInput = document.getElementById('comment');
+        
+        submitButton.addEventListener('click', function() {
+            const name = nameInput.value.trim();
+            const comment = commentInput.value.trim();
+            
+            if (!name || !comment) {
+                alert('Пожалуйста, заполните все поля');
+                return;
+            }
+            
+            // Сохраняем комментарий в TXT файл с датой 06.02.2026
+            saveCommentToTxt(name, comment);
+            
+            // Очищаем поля формы
+            nameInput.value = '';
+            commentInput.value = '';
+            
+            // Показываем уведомление
+            showNotification('Ваше прощальное пожелание сохранено и добавлено на сайт');
+        });
+        
+        // Функция для экранирования HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Функция показа уведомления
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.backgroundColor = '#8b0000';
+            notification.style.color = 'white';
+            notification.style.padding = '10px 20px';
+            notification.style.borderRadius = '5px';
+            notification.style.zIndex = '10000';
+            notification.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+            
+            document.body.appendChild(notification);
+            
+            // Удаляем уведомление через 3 секунды
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
+        // Добавляем возможность нажимать F на клавиатуре
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F' || event.key === 'f' || event.key === 'а' || event.key === 'А') {
+                fButton.click();
+                
+                // Предотвращаем стандартное действие для F
+                if (event.target.tagName !== 'INPUT' && event.target.tagName !== 'TEXTAREA') {
+                    event.preventDefault();
+                }
+            }
+        });
+        
+        // Загружаем комментарии при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCommentsFromLocalStorage();
+            
+            // Добавляем несколько свечей в случайных местах
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createCandle();
+                }, i * 300);
+            }
+        });
+        
+        function createCandle() {
+            const candle = document.createElement('div');
+            candle.className = 'candle';
+            candle.style.position = 'fixed';
+            candle.style.width = (15 + Math.random() * 20) + 'px';
+            candle.style.height = (30 + Math.random() * 40) + 'px';
+            candle.style.left = (Math.random() * 90) + 'vw';
+            candle.style.bottom = (Math.random() * 20) + 'px';
+            candle.style.opacity = 0.7 + Math.random() * 0.3;
+            
+            document.body.appendChild(candle);
+        }
+    </script>
+</body>
+</html>
